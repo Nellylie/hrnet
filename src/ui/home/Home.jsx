@@ -1,15 +1,19 @@
 import { submitForm } from "../../reduxsection/actionForm";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ModalUtils from "../../modules/modale/Modale";
 function Home(){
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch= useDispatch();
     const formSubmit = useSelector((state)=>state.form);
 
     useEffect(()=>{
-        console.log(formSubmit)
-
+        console.log(formSubmit);
     },[formSubmit]);
+
     const handleSubmit = (e) => {
+        setModalIsOpen(true);
+
         e.preventDefault();
         const formData = {
             firstName: e.target["first-name"].value,
@@ -25,9 +29,12 @@ function Home(){
             department: e.target["department"].value
         };
         dispatch(submitForm(formData));
+        setModalIsOpen(true);
+
         };
     return (
-        <form className="formulaire" action="#" id="create-employee" onSubmit={handleSubmit}>
+        <>
+         <form className="formulaire" action="#" id="create-employee" onSubmit={handleSubmit}>
                 
         <div className="section">
         <h2>Identity</h2>
@@ -78,8 +85,13 @@ function Home(){
 
         </div>
         <button type="submit">Save</button>
-    </form>
-    )
+    </form> <ModalUtils 
+                isOpen={modalIsOpen}
+                onRequestClose={() => setModalIsOpen(false)}
+                formData={formSubmit}
+            />
+            </>
+            )
 }
 
 
