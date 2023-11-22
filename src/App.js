@@ -1,11 +1,14 @@
 import RouterHandler from './routerhandler/RouterHandler';
 import './styles/main.scss';
+import store from "./reduxsection/store";
+import { Provider } from 'react-redux';
 
 function App() {
-  return (
+  return (<Provider store={store}>
     <div className="App">
      <RouterHandler/>
     </div>
+    </Provider>
   );
 }
 

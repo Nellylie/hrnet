@@ -1,8 +1,31 @@
-
+import { submitForm } from "../../reduxsection/actionForm";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 function Home(){
-    const handleSubmit = ()=>{
+    const dispatch= useDispatch();
+    const formSubmit = useSelector((state)=>state.form);
 
-    }
+    useEffect(()=>{
+        console.log(formSubmit)
+
+    },[formSubmit]);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = {
+            firstName: e.target["first-name"].value,
+            lastName: e.target["last-name"].value,
+            dateOfBirth : e.target["date-of-birth"].value,
+            dateStart: e.target["date-start"].value,
+            address: {
+            street: e.target["street"].value,
+            city: e.target["city"].value,
+            state:  e.target["state"].value,
+            zipCode: e.target["zip-code"].value
+            },
+            department: e.target["department"].value
+        };
+        dispatch(submitForm(formData));
+        };
     return (
         <form className="formulaire" action="#" id="create-employee" onSubmit={handleSubmit}>
                 
