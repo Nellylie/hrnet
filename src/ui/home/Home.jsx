@@ -1,10 +1,10 @@
 
 function Home(){
     const handleSubmit = ()=>{
-        
+
     }
     return (
-        <form action="#" id="create-employee" onSubmit={handleSubmit}>
+        <form className="formulaire" action="#" id="create-employee" onSubmit={handleSubmit}>
                 
         <div className="section">
         <h2>Identity</h2>
@@ -31,15 +31,28 @@ function Home(){
             <input id="city" type="text" />
 
             <label className="label" htmlFor="state">State</label>
-            <input id="state" type="date"/>
-
+            <select id="state">
+                <option value="Alabama">Alabama
+                </option>
+                <option value="Alaska">Alaska</option>
+                <option value="American Samoa">American Samoa</option>
+                <option value="Arizona">Arizona</option>
+            </select>
             <label className="label" htmlFor="zip-code">Zip Code</label>
             <input id="zip-code" type="number" />
         </div>
 
         <div className="section">
             <label className="label" htmlFor="department">Department</label>
-            <input type ="select" id="department"/>
+            <select id="department">
+                <option value="marketing">Marketing</option>
+                <option value="Engineering">Engineering</option>
+                <option value="development">Human Resources</option>
+                <option value="legal">Legal</option>
+            </select>
+
+
+
         </div>
         <button type="submit">Save</button>
     </form>
