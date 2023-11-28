@@ -1,36 +1,22 @@
 import Modal from 'react-modal';
+import xMark from './assets/xmark.svg';
 
-function ModalUtils({ isOpen, onRequestClose, formData }){
-    console.log(formData.formData.firstName);
-    const firstName = JSON.stringify(formData.formData.firstName);
-    const lastName = JSON.stringify(formData.formData.lastName);
-    const dateOfBirth = JSON.stringify(formData.formData.dateOfBirth);
-    const dateStart = JSON.stringify(formData.formData.dateStart);
-    const address = JSON.stringify(formData.formData.address);
-
-    
-    if (!formData) {
-        return null;
-    }
+function ModalUtils({ isOpen, onRequestClose, formData }) {
     return (
         <div>
             <Modal
-            isOpen={isOpen}
-            onRequestClose={onRequestClose}
-            contentLabel="Le nouvel employé a été créé 
-            "
-        >
-            <h2>Le nouvel employé a été créé </h2>
-            <div>Prénom: {firstName}</div>
-            <div>Nom: {lastName}</div>
-            <div>dateOfBirth: {dateOfBirth}</div>
-            <div>dateStart: {dateStart}</div>
-            <div>address: {address}</div>
-
-            <button onClick={onRequestClose}>Fermer</button>
-        </Modal>
+                isOpen={isOpen}
+                onRequestClose={onRequestClose}
+                contentLabel="New Employee"
+                className="Modal"
+                overlayClassName="Overlay"
+            >
+                Employee created!
+                <button onClick={onRequestClose} className="close-button">
+                    <img src={xMark} alt="Close" />
+                </button>
+            </Modal>
         </div>
     );
-};
-
+}
 export default ModalUtils;
