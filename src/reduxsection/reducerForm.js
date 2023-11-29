@@ -1,7 +1,13 @@
 import { FORM } from "./typeForm";
 
 const initialState = {
-    formData: {}
+    formData: [{firstName: "lea", lastName: "Pierre", dateOfBirth: "20-05-1990",
+    dateStart: "20-02-2023",
+    address: {street:"21 rue de la maison",
+        city:"paris",
+        state:"france",
+        zipCode:"92" },
+    department: "HR"}]
 };
 
 const formReducer = (state = initialState, action) => {

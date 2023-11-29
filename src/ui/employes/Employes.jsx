@@ -1,8 +1,8 @@
-
+import DataTable from "../../modules/tables/Tables";
 function Employes(){
 
     return (
-        <div>Employes page</div>
+        <div><DataTable/></div>
     )
 }
 
