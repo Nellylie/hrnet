@@ -33,7 +33,8 @@ function Home() {
     };
 
     return (
-        <>
+        <><h2>Create Employee</h2>
+
             <form className="formulaire" id="create-employee" onSubmit={handleSubmit}>
                 <div className="section-identity">
                     <label htmlFor="first-name">First Name</label>
@@ -62,10 +63,10 @@ function Home() {
                 <div className="section">
                     <label htmlFor="department">Department</label>
                     <select id="department">
-                    <option value="marketing">Marketing</option>
-                <option value="Engineering">Engineering</option>
-                <option value="development">Human Resources</option>
-                <option value="legal">Legal</option>                    </select>
+                        <option value="marketing">Marketing</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="development">Human Resources</option>
+                        <option value="legal">Legal</option>                    </select>
                 </div>
                 <button type="submit">Save</button>
             </form>

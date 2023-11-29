@@ -8,7 +8,7 @@ function RouterHandler(){
     return (<>
     <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/employes" element={<Employes/>}/>
+        <Route path="/employees" element={<Employes/>}/>
     </Routes>
     </>
     )
