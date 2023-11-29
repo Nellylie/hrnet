@@ -35,33 +35,32 @@ function Home() {
     return (
         <>
             <form className="formulaire" id="create-employee" onSubmit={handleSubmit}>
-                <div className="section">
-                    <h2>Identity</h2>
-                    <label className="label" htmlFor="first-name">First Name</label>
+                <div className="section-identity">
+                    <label htmlFor="first-name">First Name</label>
                     <input type="text" id="first-name" />
-                    <label className="label" htmlFor="last-name">Last Name</label>
+                    <label htmlFor="last-name">Last Name</label>
                     <input type="text" id="last-name" />
-                    <label className="label" htmlFor="date-of-birth">Date of Birth</label>
+                    <label htmlFor="date-of-birth">Date of Birth</label>
                     <input type="date" id="date-of-birth" />
-                    <label className="label" htmlFor="date-start">Start Date</label>
+                    <label htmlFor="date-start">Start Date</label>
                     <input type="date" id="date-start" />
                 </div>
 
-                <div className="section">
-                    <h2>Address</h2>
+                <div className="section-adress">
+                    <h3>Address</h3>
                     <label htmlFor="street">Street</label>
                     <input id="street" type="text" />
                     <label htmlFor="city">City</label>
                     <input id="city" type="text" />
-                    <label className="label" htmlFor="state">State</label>
+                    <label htmlFor="state">State</label>
                     <select id="state">
                     </select>
-                    <label className="label" htmlFor="zip-code">Zip Code</label>
+                    <label htmlFor="zip-code">Zip Code</label>
                     <input id="zip-code" type="number" />
                 </div>
 
                 <div className="section">
-                    <label className="label" htmlFor="department">Department</label>
+                    <label htmlFor="department">Department</label>
                     <select id="department">
                     <option value="marketing">Marketing</option>
                 <option value="Engineering">Engineering</option>

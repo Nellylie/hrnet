@@ -1,20 +1,51 @@
-
+h2{
+    margin:20px auto;
+    width:fit-content;
+}
 .formulaire{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width:250px;
+    margin:auto;
+    font-size: 1em;
+    font-weight: 400;
+    position:relative;
 }
 
-.section{
+.formulaire h3{
+    position: absolute;
+    top:0;
+    margin-top: -10px;
+    width:fit-content;
+    background-color: white;
+    padding:0 2px;
+    font-size: 0.9em;
+}
+.section-identity{
     display:flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+    width: 100%;
     margin-bottom: 20px;
 }
 
-.label{
-    margin:5px auto;
+.section-identity> label, input{
+    margin:3px 0;
+}
+.section-adress{
+    position:relative;
+    border:1px solid black;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding:10px;
+    width:90%;
+}
 
+.section-adress> label, input{
+    margin:3px 0;
 }
