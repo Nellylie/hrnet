@@ -21,12 +21,12 @@ function Home() {
             lastName: e.target["last-name"].value,
             dateOfBirth: e.target["date-of-birth"].value,
             dateStart: e.target["date-start"].value,
-            address: {
-                street: e.target["street"].value,
-                city: e.target["city"].value,
-                state: e.target["state"].value,
-                zipCode: e.target["zip-code"].value
-            },
+            // address: {
+            //     street: e.target["street"].value,
+            //     city: e.target["city"].value,
+            //     state: e.target["state"].value,
+            //     zipCode: e.target["zip-code"].value
+            // },
             department: e.target["department"].value
         };
         dispatch(submitForm(formData));
@@ -55,6 +55,8 @@ function Home() {
                     <input id="city" type="text" />
                     <label htmlFor="state">State</label>
                     <select id="state">
+                    <option value="paris">Paris</option>
+                    <option value="marseille">marseille</option>
                     </select>
                     <label htmlFor="zip-code">Zip Code</label>
                     <input id="zip-code" type="number" />

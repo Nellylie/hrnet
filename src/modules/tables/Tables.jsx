@@ -4,21 +4,19 @@ import { useSelector } from 'react-redux';
 
 function DataTable() {
     const data = useSelector(state => state.form.formData);
-    console.log("dd", data);
+    console.log("Data for table:", data);
+
     const columns = React.useMemo(
         () => [
             { Header: 'First Name', accessor: 'firstName' },
             { Header: 'Last Name', accessor: 'lastName' },
             { Header: 'Date of Birth', accessor: 'dateOfBirth' },
             { Header: 'Start Date', accessor: 'dateStart' },
-            { Header: 'Street', accessor: 'address.street' },
-            { Header: 'City', accessor: 'address.city' },
-            { Header: 'State', accessor: 'address.state' },
-            { Header: 'Zip Code', accessor: 'address.zipCode' },
-            { Header: 'Department', accessor: 'department' },
         ],
-        []
+        [data] 
     );
+
+    const tableInstance = useTable({ columns, data });
 
     const {
         getTableProps,
@@ -26,7 +24,7 @@ function DataTable() {
         headerGroups,
         rows,
         prepareRow,
-    } = useTable({ columns, data });
+    } = tableInstance;
 
     return (
         <div className="tableContainer">
@@ -45,9 +43,9 @@ function DataTable() {
                         prepareRow(row);
                         return (
                             <tr {...row.getRowProps()}>
-                                {row.cells.map(cell => {
-                                    return <td {...cell.getCellProps()} className="td">{cell.render('Cell')}</td>;
-                                })}
+                                {row.cells.map(cell => (
+                                    <td {...cell.getCellProps()} className="td">{cell.render('Cell')}</td>
+                                ))}
                             </tr>
                         );
                     })}
