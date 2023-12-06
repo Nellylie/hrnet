@@ -1,11 +1,7 @@
 import { FORM } from "./typeForm";
-
+import { data } from "../datasmock/mockDatas"
 const initialState = {
-    formData: [{firstName: "lea", lastName: "Pierre", dateOfBirth: "20-05-1990",
-    dateStart: "20-02-2023",
-    department: "HR"}, {firstName: "lea", lastName: "Pierre", dateOfBirth: "20-05-1990",
-    dateStart: "20-02-2023",
-    department: "HR"}]
+    formData: data
 };
 
 const formReducer = (state = initialState, action) => {
