@@ -1,10 +1,10 @@
 import React from 'react';
-import { useTable, usePagination } from 'react-table';
+import { useTable, usePagination, useSortBy } from 'react-table';
 import { useSelector } from 'react-redux';
+import Arrows from "./arrows/Arrows";
 
 function DataTable() {
     const data = useSelector(state => state.form.formData);
-
     const columns = React.useMemo(
         () => [
             { Header: 'First Name', accessor: 'firstName' },
@@ -35,7 +35,7 @@ function DataTable() {
         previousPage,
         setPageSize,
         state: { pageIndex, pageSize },
-    } = useTable({ columns, data }, usePagination);
+    } = useTable({ columns, data }, useSortBy, usePagination);
 
     return (
         <div className="tableContainer">
@@ -57,7 +57,14 @@ function DataTable() {
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                    {column.render('Header')}
+                                    <span>
+                                        {column.isSorted
+                                            ? (column.isSortedDesc ? <Arrows direction ="down"/> : <Arrows direction = "up"/>)
+                                            : <Arrows direction = "neutral"/>}
+                                    </span>
+                                </th>
                             ))}
                         </tr>
                     ))}
@@ -78,14 +85,15 @@ function DataTable() {
 
             <div className="pagination-controls">
                 <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    {'Previous'}
+                    {'< Précédent'}
                 </button>{' '}
                 <button onClick={() => nextPage()} disabled={!canNextPage}>
-                    {'Next'}
+                    {'Suivant >'}
                 </button>
             </div>
         </div>
     );
 }
+
 
 export default DataTable;
