@@ -2,11 +2,28 @@ import { submitForm } from "../../reduxsection/actionForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ModalUtils from "../../modules/modale/Modale";
+import DarkLightDropdown from 'dark-light-dropdown';
+import 'dark-light-dropdown/dist/index.es.css';
+import { departmentDatas } from "../../modules/dropdown/departmentDatas";
+import { statesDatas } from "../../modules/dropdown/statesDatas";
 
 function Home() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
     const formSubmit = useSelector((state) => state.form);
+
+
+    const [selectedValueDepartment, setSelectedValueDepartment] = useState('');
+    const [selectedValueStates, setSelectedValueStates ] = useState('');
+
+    const handleOnChangeDepartment = (event) => {
+        setSelectedValueDepartment(event.target.value);
+    };
+
+
+    const handleOnChangeStates = (event) => {
+        setSelectedValueStates(event.target.value);
+    };
 
     useEffect(() => {
         console.log(formSubmit);
@@ -19,22 +36,19 @@ function Home() {
         const formData = {
             firstName: e.target["first-name"].value,
             lastName: e.target["last-name"].value,
-            dateOfBirth: e.target["date-of-birth"].value,
             dateStart: e.target["date-start"].value,
-            // address: {
-            //     street: e.target["street"].value,
-            //     city: e.target["city"].value,
-            //     state: e.target["state"].value,
-            //     zipCode: e.target["zip-code"].value
-            // },
-            department: e.target["department"].value
+            department: selectedValueDepartment,
+            dateOfBirth: e.target["date-of-birth"].value,
+            street: e.target["street"].value,
+            city: e.target["city"].value,
+            state: selectedValueStates,
+            zipCode: e.target["zip-code"].value,
         };
         dispatch(submitForm(formData));
     };
 
     return (
         <><h2>Create Employee</h2>
-
             <form className="formulaire" id="create-employee" onSubmit={handleSubmit}>
                 <div className="section-identity">
                     <label htmlFor="first-name">First Name</label>
@@ -53,22 +67,25 @@ function Home() {
                     <input id="street" type="text" />
                     <label htmlFor="city">City</label>
                     <input id="city" type="text" />
-                    <label htmlFor="state">State</label>
-                    <select id="state">
-                    <option value="paris">Paris</option>
-                    <option value="marseille">marseille</option>
-                    </select>
+
+                    <DarkLightDropdown label="State"
+                        name="state"
+                        id="state"
+                        options={statesDatas}
+                        onChange={handleOnChangeStates}
+                        theme="light" />
+
                     <label htmlFor="zip-code">Zip Code</label>
                     <input id="zip-code" type="number" />
                 </div>
 
-                <div className="section">
-                    <label htmlFor="department">Department</label>
-                    <select id="department">
-                        <option value="marketing">Marketing</option>
-                        <option value="Engineering">Engineering</option>
-                        <option value="development">Human Resources</option>
-                        <option value="legal">Legal</option>                    </select>
+                <div className="section-department">
+                    <DarkLightDropdown label="Department"
+                        name="department"
+                        id="department"
+                        options={departmentDatas}
+                        onChange={handleOnChangeDepartment}
+                        theme="dark" />
                 </div>
                 <button type="submit">Save</button>
             </form>
