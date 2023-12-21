@@ -1,4 +1,4 @@
-import { submitForm } from "../../reduxsection/actionForm";
+import { submitForm } from "../../reduxsection/formSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ModalUtils from "../../modules/modale/Modale";
@@ -10,7 +10,7 @@ import { statesDatas } from "../../modules/dropdown/statesDatas";
 function Home() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
-    const formSubmit = useSelector((state) => state.form);
+    const formSubmit = useSelector((state) => state.form.formData);
 
 
     const [selectedValueDepartment, setSelectedValueDepartment] = useState('');
