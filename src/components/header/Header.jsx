@@ -11,12 +11,12 @@ function Header() {
         navigate(newUrl);    }
 
     return (
-        <>
+        <div className="header-content">
             <h1>HRnet</h1>
             <button onClick={toggleUrl}>
                 {switchUrl === homeUrl ? 'Go to Employees List' : 'Create New Employee'}
             </button>
-        </>
+        </div>
     )
 }
 
