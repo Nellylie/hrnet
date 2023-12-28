@@ -6,8 +6,13 @@ import DarkLightDropdown from 'dark-light-dropdown';
 import 'dark-light-dropdown/dist/index.es.css';
 import { departmentDatas } from "../../modules/dropdown/departmentDatas";
 import { statesDatas } from "../../modules/dropdown/statesDatas";
+import { formatDate } from "../../utils/utils";
+import DateSelect from "../../modules/selectdate/SelectDate";
 
 function Home() {
+    const [dateOfBirth, setDateOfBirth] = useState(new Date());
+    const [dateStart, setDateStart] = useState(new Date());
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
     const formSubmit = useSelector((state) => state.form.formData);
@@ -36,9 +41,9 @@ function Home() {
         const formData = {
             firstName: e.target["first-name"].value,
             lastName: e.target["last-name"].value,
-            dateStart: e.target["date-start"].value,
+            dateStart: formatDate(dateStart),
             department: selectedValueDepartment,
-            dateOfBirth: e.target["date-of-birth"].value,
+            dateOfBirth: formatDate(dateOfBirth),
             street: e.target["street"].value,
             city: e.target["city"].value,
             state: selectedValueStates,
@@ -56,9 +61,9 @@ function Home() {
                     <label htmlFor="last-name">Last Name</label>
                     <input type="text" id="last-name" />
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <input type="date" id="date-of-birth" />
+                    <DateSelect selectedDate={dateOfBirth} onChange={setDateOfBirth} dateFormat="MM/dd/yyyy" />
                     <label htmlFor="date-start">Start Date</label>
-                    <input type="date" id="date-start" />
+                    <DateSelect selectedDate={dateStart} onChange={setDateStart} dateFormat="MM/dd/yyyy"/>
                 </div>
 
                 <div className="section-adress">

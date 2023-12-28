@@ -1,3 +1,26 @@
+import { formatDate } from "../utils/utils";
+
+export const formatedData = (data)=> {
+    let formattedData = data.map(entry => {
+        let newEntry = {...entry};
+        if(newEntry.startDate) {
+            let startDate = formatDate(newEntry.startDate);
+            newEntry.startDate = startDate
+        }
+        if(newEntry.dateOfBirth) {
+            let dateOfBirth = formatDate(newEntry.dateOfBirth);
+            newEntry.dateOfBirth = dateOfBirth;
+        }
+        
+        return newEntry;
+    });
+
+    return formattedData;
+};
+
+
+
+
 export const data = [
     {
         firstName: "Libbi",
