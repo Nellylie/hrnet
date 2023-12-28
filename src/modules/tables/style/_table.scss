@@ -15,6 +15,7 @@
     justify-content: space-between;
     width:100%;
     margin: 20px auto;
+    padding:10px;
   }
 
   .table-content-foot{
@@ -38,7 +39,7 @@
   }
   td {
     border-top: 1px solid black;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+    border-bottom: 1px solid #6e8412;
     padding: 5px;
     height:100%;
     width:200px;
@@ -47,6 +48,16 @@
   tr{
     height:50px;
   }
+
+  tr:nth-child(even) {
+    background-color: #94ad1818;
+  }
+
+  tr:hover{
+    background-color: #94ad183a;
+    cursor: pointer;
+  }
+
 .show-entries {
     position: relative;
     top: 0;
@@ -66,8 +77,6 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
-
-
 }
 
 .arrows img{

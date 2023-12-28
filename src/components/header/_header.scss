@@ -6,6 +6,17 @@
     justify-content: center;
 }
 
+.header-logo{
+    width:150px;
+    height:auto;
+    margin:auto;
+}
+.header-logo img{
+    object-fit: contain;
+    height:100%;
+    width:100%;
+}
+
 h1{
     margin:20px auto;
     width:fit-content;

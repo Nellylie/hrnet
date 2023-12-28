@@ -7,11 +7,16 @@ h2{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:250px;
-    margin:auto;
+    width:300px;
+    margin:0 auto 20px auto;
     font-size: 1em;
     font-weight: 400;
     position:relative;
+    padding: 40px;
+    border-left: 3px solid #6e8412;
+    border-right: 3px solid #6e8412;
+    background-color: #94ad1818;
+    border-radius:20px;
 }
 
 .formulaire h3{
@@ -19,8 +24,9 @@ h2{
     top:0;
     margin-top: -10px;
     width:fit-content;
-    background-color: white;
-    padding:0 2px;
+    border-radius:10px;
+    background-color:#93ad18;
+    padding:5px 12px;
     font-size: 0.9em;
 }
 .section-identity{
@@ -42,12 +48,12 @@ h2{
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding:10px;
+    padding:15px;
     width:90%;
 }
 
 .section-adress> label, input{
-    margin:3px 0;
+    margin:5px 0;
 }
 
 .section-department{
