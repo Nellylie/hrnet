@@ -1,125 +1,176 @@
 .table-container {
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    width:90%;
-    min-width: 600px;
-    max-width: 1400px;
-    margin:auto;
-  }
-  
-  .table-content-head{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width:100%;
-    margin: 20px auto;
-    padding:10px;
-  }
-
-  .table-content-foot{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width:100%;
-    margin: 20px auto;
-  }
-  .table {
-    border-collapse: collapse;
-    margin: auto;
-    width:100%;
-  }
-  
-  th{
-    border:none;
-    padding: 5px;
-    height:100%;
-    width:200px;
-  }
-  td {
-    border-top: 1px solid black;
-    border-bottom: 1px solid #6e8412;
-    padding: 5px;
-    height:100%;
-    width:200px;
-  }
-
-  tr{
-    height:50px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #94ad1818;
-  }
-
-  tr:hover{
-    background-color: #94ad183a;
-    cursor: pointer;
-  }
-
-.show-entries {
-    position: relative;
-    top: 0;
-    left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
 }
 
+.table-content-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.table-content-foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 20px auto;
+  flex-wrap: wrap;
+}
+
+.table {
+  border-collapse: collapse;
+  margin: auto;
+  width: 100%;
+}
+
+th {
+  border: none;
+  padding: 10px;
+  height: 100%;
+  width: auto;
+}
+
+td {
+  border-top: 1px solid black;
+  border-bottom: 1px solid #6e8412;
+  padding: 10px;
+  height: 100%;
+  width: auto;
+}
+
+tr {
+  height: 50px;
+}
+
+tr:nth-child(even) {
+  background-color: #94ad1818;
+}
+
+tr:hover {
+  background-color: #94ad183a;
+  cursor: pointer;
+}
+
+.show-entries,
+.table-filter,
 .pagination-controls {
-    position: relative;
+  position: relative;
+  width: fit-content;
+  margin-bottom: 10px;
 }
 
-.arrows{
+.arrows {
   position: relative;
-  top:-20px;
-  display:flex;
+  top: -20px;
+  display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
 }
 
-.arrows img{
-  height:10px;
+.arrows img {
+  height: 10px;
 }
 
-.table-filter{
-width:fit-content;
-
-}
-
-
-.pagination-button, .page-button {
+.pagination-button,
+.page-button {
   display: inline-block;
-  min-width: 30px; 
+  min-width: 30px;
   height: 30px;
-  background-color: grey;
-  color: white;
   text-align: center;
-  line-height: 30px;
   margin-right: 5px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-
+  background: linear-gradient(to top, grey, #94ad183a);
+  color: black;
+  border-radius: 4px;
 }
 
-.pagination-button:hover, .page-button:hover {
-  background-color: black; 
-  color:white;
+.pagination-button:hover,
+.page-button:hover {
+  background-color: black;
+  color: white;
 }
 
-.pagination-button:disabled, .page-button:disabled {
+.pagination-button:disabled,
+.page-button:disabled {
   cursor: default;
 }
 
-.page-button {
-  background:linear-gradient(to top, grey, #94ad183a);
-  width:fit-content;
-  color:black;
-  border-radius: 4px;
-
-}
 
 .page-button.active {
-  background-color: black; 
-  color:white;
+  background-color: black;
+  color: white;
+}
+
+@media screen and (max-width: 850px) {
+
+  .table,
+  thead,
+  tbody,
+  th,
+  td {
+    display: block;
+  }
+
+  .table {
+    height: fit-content;
+    min-width:300px;
+
+  }
+
+  .table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .table td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 200px;
+    min-width: 100px;
+    white-space: nowrap;
+    background: #f8f8f8;
+    margin-right: 10px;
+    border:none;
+  }
+
+  .table td {
+    display: flex;
+    align-items: center;
+    border:none;
+    height:20px;
+
+  }
+  .table td>p{
+    background: #f8f8f8;
+    padding:0 50px;
+    width:100%;
+  }
+  .table tr {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+
+
+  .page-button {
+   
+    min-width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
 }

@@ -72,12 +72,12 @@ function DataTable() {
         }
         for (let i = startPage; i <= endPage; i++) {
             pages.push(
-                <button 
-                  key={i} 
-                  onClick={() => gotoPage(i)} 
-                  disabled={pageIndex === i}
-                  className={`page-button ${pageIndex === i ? 'active' : ''}`}> 
-                  {i + 1}
+                <button
+                    key={i}
+                    onClick={() => gotoPage(i)}
+                    disabled={pageIndex === i}
+                    className={`page-button ${pageIndex === i ? 'active' : ''}`}>
+                    {i + 1}
                 </button>
             );
         }
@@ -120,18 +120,13 @@ function DataTable() {
                     />
                 </div>
             </div>
-            <table {...getTableProps()} className="table">
+            <table className="table" {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                     {column.render('Header')}
-                                    <span>
-                                        {column.isSorted
-                                            ? column.isSortedDesc ? <Arrows direction="down" /> : <Arrows direction="up" />
-                                            : <Arrows direction="neutral" />}
-                                    </span>
                                 </th>
                             ))}
                         </tr>
@@ -143,7 +138,9 @@ function DataTable() {
                         return (
                             <tr {...row.getRowProps()}>
                                 {row.cells.map(cell => (
-                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    <td {...cell.getCellProps()} data-label={cell.column.Header}>
+                                        <p>{cell.render('Cell')}</p>
+                                    </td>
                                 ))}
                             </tr>
                         );
@@ -151,16 +148,16 @@ function DataTable() {
                 </tbody>
             </table>
             <div className="table-content-foot">
-            
-            <div className="pagination-info">
+
+                <div className="pagination-info">
                     Showing {pageSize * pageIndex + 1} to {pageSize * pageIndex + page.length} of {data.length} entries
                 </div>
                 <div className="pagination-controls">
-                    <button  className ="page-button" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                    <button className="page-button" onClick={() => previousPage()} disabled={!canPreviousPage}>
                         {'Previous'}
                     </button>
                     {generatePageButtons()}
-                    <button  className ="page-button" onClick={() => nextPage()} disabled={!canNextPage}>
+                    <button className="page-button" onClick={() => nextPage()} disabled={!canNextPage}>
                         {'Next'}
                     </button>
                 </div>
