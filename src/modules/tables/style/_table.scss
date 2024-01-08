@@ -68,8 +68,6 @@
     position: relative;
 }
 
-.arrows-container{
-}
 .arrows{
   position: relative;
   top:-20px;
@@ -86,4 +84,42 @@
 .table-filter{
 width:fit-content;
 
+}
+
+
+.pagination-button, .page-button {
+  display: inline-block;
+  min-width: 30px; 
+  height: 30px;
+  background-color: grey;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  margin-right: 5px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+
+}
+
+.pagination-button:hover, .page-button:hover {
+  background-color: black; 
+  color:white;
+}
+
+.pagination-button:disabled, .page-button:disabled {
+  cursor: default;
+}
+
+.page-button {
+  background:linear-gradient(to top, grey, #94ad183a);
+  width:fit-content;
+  color:black;
+  border-radius: 4px;
+
+}
+
+.page-button.active {
+  background-color: black; 
+  color:white;
 }

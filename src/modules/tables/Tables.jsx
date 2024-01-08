@@ -62,7 +62,7 @@ function DataTable() {
         const pages = [];
         if (startPage > 0) {
             pages.push(
-                <button key="first" onClick={() => gotoPage(0)}>
+                <button className="page-button" key="first" onClick={() => gotoPage(0)}>
                     1
                 </button>
             );
@@ -72,8 +72,12 @@ function DataTable() {
         }
         for (let i = startPage; i <= endPage; i++) {
             pages.push(
-                <button key={i} onClick={() => gotoPage(i)} disabled={pageIndex === i}>
-                    {i + 1}
+                <button 
+                  key={i} 
+                  onClick={() => gotoPage(i)} 
+                  disabled={pageIndex === i}
+                  className={`page-button ${pageIndex === i ? 'active' : ''}`}> 
+                  {i + 1}
                 </button>
             );
         }
@@ -82,7 +86,7 @@ function DataTable() {
                 pages.push(<span key="lastEllipsis">...</span>);
             }
             pages.push(
-                <button key="last" onClick={() => gotoPage(pageCount - 1)}>
+                <button className="page-button" key="last" onClick={() => gotoPage(pageCount - 1)}>
                     {pageCount}
                 </button>
             );
@@ -152,18 +156,12 @@ function DataTable() {
                     Showing {pageSize * pageIndex + 1} to {pageSize * pageIndex + page.length} of {data.length} entries
                 </div>
                 <div className="pagination-controls">
-                    <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                        {'<<'}
-                    </button>
-                    <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                        {'<'}
+                    <button  className ="page-button" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        {'Previous'}
                     </button>
                     {generatePageButtons()}
-                    <button onClick={() => nextPage()} disabled={!canNextPage}>
-                        {'>'}
-                    </button>
-                    <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                        {'>>'}
+                    <button  className ="page-button" onClick={() => nextPage()} disabled={!canNextPage}>
+                        {'Next'}
                     </button>
                 </div>
             </div>
