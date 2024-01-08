@@ -11,7 +11,7 @@ import DateSelect from "../../modules/selectdate/SelectDate";
 
 function Home() {
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
-    const [dateStart, setDateStart] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date());
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ function Home() {
         const formData = {
             firstName: e.target["first-name"].value,
             lastName: e.target["last-name"].value,
-            dateStart: formatDate(dateStart),
+            startDate: formatDate(startDate),
             department: selectedValueDepartment,
             dateOfBirth: formatDate(dateOfBirth),
             street: e.target["street"].value,
@@ -63,7 +63,7 @@ function Home() {
                     <label htmlFor="date-of-birth">Date of Birth</label>
                     <DateSelect selectedDate={dateOfBirth} onChange={setDateOfBirth} dateFormat="MM/dd/yyyy" />
                     <label htmlFor="date-start">Start Date</label>
-                    <DateSelect selectedDate={dateStart} onChange={setDateStart} dateFormat="MM/dd/yyyy"/>
+                    <DateSelect selectedDate={startDate} onChange={setStartDate} dateFormat="MM/dd/yyyy"/>
                 </div>
 
                 <div className="section-adress">

@@ -3,6 +3,12 @@ import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table
 import { useSelector } from 'react-redux';
 import Arrows from "./arrows/Arrows";
 
+const dateSortMethod = (rowA, rowB, columnId, desc) => {
+    const dateA = new Date(rowA.values[columnId]);
+    const dateB = new Date(rowB.values[columnId]);
+    return dateA > dateB ? 1 : -1;
+};
+
 function DataTable() {
     const data = useSelector(state => state.form.formData);
     const [filterInput, setFilterInput] = useState('');
@@ -11,9 +17,9 @@ function DataTable() {
         () => [
             { Header: 'First Name', accessor: 'firstName' },
             { Header: 'Last Name', accessor: 'lastName' },
-            { Header: 'Start Date', accessor: 'dateStart' },
+            { Header: 'Start Date', accessor: 'startDate', sortType: dateSortMethod },
             { Header: 'Department', accessor: 'department' },
-            { Header: 'Date of Birth', accessor: 'dateOfBirth' },
+            { Header: 'Date of Birth', accessor: 'dateOfBirth', sortType: dateSortMethod },
             { Header: 'Street', accessor: 'street' },
             { Header: 'City', accessor: 'city' },
             { Header: 'State', accessor: 'state' },
