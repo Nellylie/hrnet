@@ -127,6 +127,12 @@ function DataTable() {
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                     {column.render('Header')}
+                                    <span>
+                                        {column.isSorted
+                                            ? column.isSortedDesc ? <Arrows direction="down" /> : <Arrows direction="up" />
+                                            : <Arrows direction="neutral" />}
+                                    </span>
+
                                 </th>
                             ))}
                         </tr>
@@ -139,6 +145,8 @@ function DataTable() {
                             <tr {...row.getRowProps()}>
                                 {row.cells.map(cell => (
                                     <td {...cell.getCellProps()} data-label={cell.column.Header}>
+         
+
                                         <p>{cell.render('Cell')}</p>
                                     </td>
                                 ))}
