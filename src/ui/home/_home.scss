@@ -57,6 +57,35 @@ h2{
 }
 
 .section-department{
-
+    height:100px;
+    display:flex;
+    padding-top: 10px;
+    flex-direction: column;
+    row-gap: 10px;
     width:100%;
+}
+
+.section-department label{
+    margin-top: 5px;
+}
+.error{
+    width:200px;
+    margin:auto;
+    color:red;
+    text-align: center;
+}
+
+.form-save-button{
+    background-color:#93ad18;
+    width:fit-content;
+    color:black;
+    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.form-save-button:hover{
+    background-color:#000000;
+    color:#93ad18;
 }

@@ -12,32 +12,46 @@ import DateSelect from "../../modules/selectdate/SelectDate";
 function Home() {
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
     const [startDate, setStartDate] = useState(new Date());
-
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
     const formSubmit = useSelector((state) => state.form.formData);
-
-
     const [selectedValueDepartment, setSelectedValueDepartment] = useState('');
     const [selectedValueStates, setSelectedValueStates ] = useState('');
+    const [error, setError] = useState('');
 
-    const handleOnChangeDepartment = (event) => {
-        setSelectedValueDepartment(event.target.value);
+    const handleOnChangeDepartment = (event) => setSelectedValueDepartment(event.target.value);
+    const handleOnChangeStates = (event) => setSelectedValueStates(event.target.value);
+    useEffect(() => console.log(formSubmit), [formSubmit]);
+
+    const isEmpty = (value) => value.trim() === "";
+    const containsInvalidChars = (value) => /[^a-zA-Z0-9 ]/.test(value);
+
+    const validateForm = (e) => {
+        const fieldsToValidate = [
+            { value: e.target["first-name"].value, fieldName: "First Name" },
+            { value: e.target["last-name"].value, fieldName: "Last Name" },
+            { value: e.target["street"].value, fieldName: "Street" },
+            { value: e.target["city"].value, fieldName: "City" },
+            { value: e.target["zip-code"].value, fieldName: "Zip Code" }
+        ];
+
+        for (let { value, fieldName } of fieldsToValidate) {
+            if (isEmpty(value)) {
+                setError(`${fieldName} is required.`);
+                return false;
+            }
+            if (containsInvalidChars(value)) {
+                setError(`${fieldName} contains invalid characters.`);
+                return false;
+            }
+        }
+        return true;
     };
-
-
-    const handleOnChangeStates = (event) => {
-        setSelectedValueStates(event.target.value);
-    };
-
-    useEffect(() => {
-        console.log(formSubmit);
-    }, [formSubmit]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setModalIsOpen(true);
-
+        if (!validateForm(e)) return;
+        setError('');
         const formData = {
             firstName: e.target["first-name"].value,
             lastName: e.target["last-name"].value,
@@ -50,6 +64,7 @@ function Home() {
             zipCode: e.target["zip-code"].value,
         };
         dispatch(submitForm(formData));
+        setModalIsOpen(true);
     };
 
     return (
@@ -61,9 +76,9 @@ function Home() {
                     <label htmlFor="last-name">Last Name</label>
                     <input type="text" id="last-name" />
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DateSelect selectedDate={dateOfBirth} onChange={setDateOfBirth} dateFormat="MM/dd/yyyy" />
+                    <DateSelect label="date-of-birth" selectedDate={dateOfBirth} onChange={setDateOfBirth} dateFormat="MM/dd/yyyy" />
                     <label htmlFor="date-start">Start Date</label>
-                    <DateSelect selectedDate={startDate} onChange={setStartDate} dateFormat="MM/dd/yyyy"/>
+                    <DateSelect label="date-start" selectedDate={startDate} onChange={setStartDate} dateFormat="MM/dd/yyyy"/>
                 </div>
 
                 <div className="section-adress">
@@ -73,7 +88,7 @@ function Home() {
                     <label htmlFor="city">City</label>
                     <input id="city" type="text" />
 
-                    <DarkLightDropdown label="State"
+                    <DarkLightDropdown label="state"
                         name="state"
                         id="state"
                         options={statesDatas}
@@ -92,7 +107,8 @@ function Home() {
                         onChange={handleOnChangeDepartment}
                         theme="dark" />
                 </div>
-                <button type="submit">Save</button>
+                {error && <div className="error">{error}</div>}
+                <button className="form-save-button" type="submit">Save</button>
             </form>
             <ModalUtils
                 isOpen={modalIsOpen}
