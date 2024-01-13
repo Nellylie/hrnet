@@ -27,7 +27,7 @@ function Home() {
     // Event handlers for dropdowns and form validation
     const handleOnChangeDepartment = (event) => setSelectedValueDepartment(event.target.value);
     const handleOnChangeStates = (event) => setSelectedValueStates(event.target.value);
-    useEffect(() => console.log(formSubmit), [formSubmit]);
+    useEffect(() => [formSubmit]);
 
     const isEmpty = (value) => value.trim() === "";
     const containsInvalidChars = (value) => /[^a-zA-Z0-9 ]/.test(value);
