@@ -3,10 +3,16 @@ import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table
 import { useSelector } from 'react-redux';
 import Arrows from "./arrows/Arrows";
 
+// This component renders a data table using react-table hooks. It features sortable columns, 
+// global filtering, and pagination. The data for the table is sourced from a Redux state. 
+// It includes a dynamic pagination system and an input field for filtering the displayed data.
+// Additionally, the table header dynamically adjusts sorting arrows based on the current sort state.
 const DataTable = () => {
+    // Accessing data from Redux and initializing filter state
     const data = useSelector(state => state.form.formData);
     const [filterInput, setFilterInput] = useState('');
 
+    // Defining table columns with sorting
     const columns = useMemo(() => [
         { Header: 'First Name', accessor: 'firstName' },
         { Header: 'Last Name', accessor: 'lastName' },
@@ -19,6 +25,7 @@ const DataTable = () => {
         { Header: 'Zip Code', accessor: 'zipCode' }
     ], []);
 
+    // React-table hooks for table features
     const {
         getTableProps,
         getTableBodyProps,
@@ -36,12 +43,14 @@ const DataTable = () => {
         state: { pageIndex, pageSize },
     } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination);
 
+    // Handles changes in the filter input
     const handleFilterChange = e => {
         const value = e.target.value || undefined;
         setGlobalFilter(value);
         setFilterInput(value);
     };
 
+    // Component for individual pagination buttons
     const PaginationButton = ({ page, text, isActive }) => (
         <button 
             className={`page-button ${isActive ? 'active' : ''}`}
@@ -51,6 +60,7 @@ const DataTable = () => {
         </button>
     );
 
+    // Generates buttons for pagination
     const generatePageButtons = useMemo(() => {
         let buttons = [];
         for (let i = 0; i < pageCount; i++) {

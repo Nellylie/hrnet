@@ -10,15 +10,21 @@ import { formatDate } from "../../utils/utils";
 import DateSelect from "../../modules/selectdate/SelectDate";
 
 function Home() {
+    // State initialization for form fields and modal
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
     const [startDate, setStartDate] = useState(new Date());
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    
+    // Redux hooks for dispatching actions and accessing state
     const dispatch = useDispatch();
     const formSubmit = useSelector((state) => state.form.formData);
+
+    // State for dropdown selections and form error messages
     const [selectedValueDepartment, setSelectedValueDepartment] = useState('');
     const [selectedValueStates, setSelectedValueStates ] = useState('');
     const [error, setError] = useState('');
 
+    // Event handlers for dropdowns and form validation
     const handleOnChangeDepartment = (event) => setSelectedValueDepartment(event.target.value);
     const handleOnChangeStates = (event) => setSelectedValueStates(event.target.value);
     useEffect(() => console.log(formSubmit), [formSubmit]);
@@ -26,6 +32,9 @@ function Home() {
     const isEmpty = (value) => value.trim() === "";
     const containsInvalidChars = (value) => /[^a-zA-Z0-9 ]/.test(value);
 
+    // validateForm: Validates form inputs for emptiness and invalid characters.
+    // Iterates through specified fields, setting an error message if a field is invalid.
+    // Returns true if all fields are valid, false otherwise.
     const validateForm = (e) => {
         const fieldsToValidate = [
             { value: e.target["first-name"].value, fieldName: "First Name" },
@@ -48,6 +57,10 @@ function Home() {
         return true;
     };
 
+// handleSubmit: Handles the form submission.
+// It prevents the default form submission behavior, validates the form, 
+// and if valid, dispatches the submitForm action with the formatted form data.
+// After submission, it opens a modal to confirm the action.
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!validateForm(e)) return;
@@ -67,6 +80,7 @@ function Home() {
         setModalIsOpen(true);
     };
 
+    // Component rendering form and modal
     return (
         <><h2>Create Employee</h2>
             <form className="formulaire" id="create-employee" onSubmit={handleSubmit}>

@@ -1,8 +1,11 @@
 import { formatDate } from "../utils/utils";
 
 export const formatedData = (data)=> {
+        // Map over data to format date fields
     let formattedData = data.map(entry => {
         let newEntry = {...entry};
+        // Format 'startDate' or 'dateofbirth' if present
+
         if(newEntry.startDate) {
             let startDate = formatDate(newEntry.startDate);
             newEntry.startDate = startDate
@@ -15,9 +18,10 @@ export const formatedData = (data)=> {
         return newEntry;
     });
 
-    return formattedData;
+    return formattedData; // Return the array of formatted data
 };
 
+// mock data example
 export const data = [{ 
     firstName: 'Maëly', 
     lastName: 'Kirman', 
