@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import xMark from './assets/xmark.svg';
 
-function ModalUtils({ isOpen, onRequestClose, formData }) {
+function ModalUtils({ isOpen, onRequestClose }) {
     return (
         <div>
             <Modal
