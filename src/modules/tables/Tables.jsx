@@ -42,8 +42,11 @@ const DataTable = () => {
         setFilterInput(value);
     };
 
-    const PaginationButton = ({ page, text }) => (
-        <button className="page-button" onClick={() => gotoPage(page)}>
+    const PaginationButton = ({ page, text, isActive }) => (
+        <button 
+            className={`page-button ${isActive ? 'active' : ''}`}
+            onClick={() => gotoPage(page)}
+        >
             {text}
         </button>
     );
@@ -52,12 +55,12 @@ const DataTable = () => {
         let buttons = [];
         for (let i = 0; i < pageCount; i++) {
             buttons.push(
-                <PaginationButton key={i} page={i} text={i + 1} />
+                <PaginationButton key={i} page={i} text={i + 1} isActive={pageIndex === i} />
             );
         }
         return buttons;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pageCount, gotoPage]);
+    }, [pageCount, gotoPage, pageIndex]);
 
     return (
         <div className="table-container">
