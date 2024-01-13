@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { data, formatedData } from '../datasmock/mockDatas';
+import { data } from '../datasmock/mockDatas';
 
 // Setting initial state with formatted data
 const initialState = {
-    formData: formatedData(data),
+    formData: data,
 };
 
 // Create a slice for form operations
