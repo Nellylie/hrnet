@@ -27,7 +27,7 @@ function Header() {
     return (
         <div className="header-content">
             {location.pathname === "/"&&(<div className="header-logo">
-                <Link to="/"><img src={logo} alt="hrnet logo" /></Link>
+               <img src={logo} alt="hrnet logo" />
             </div>)}
             <h1>HRnet</h1>
             <button onClick={toggleUrl}>
