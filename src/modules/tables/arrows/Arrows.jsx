@@ -7,17 +7,23 @@ import downGrey from "../icons/arrow-down-grey.svg";
 function Arrows({ direction }) {
     return (
         <div className="arrows-container">
-            {direction === "up" && (
-                <div className="arrows"><img src={up} alt="Up Arrow"/><img src={downGrey} alt="Down Arrow"/></div>
+            {direction === "up" 
+            && (
+                <div className="arrows"><img src={up}  width="20px" height="20px" alt="Up Arrow"/>
+                <img src={downGrey}  width="20px" height="20px" alt="Down Arrow"/></div>
             )}
-            {direction === "down" && (
-                <div className="arrows"><img src={upGrey} alt="Up Arrow"/><img src={down} alt="Down Arrow"/></div>
+            {direction === "down" 
+            && (
+                <div className="arrows"><img src={upGrey}  width="20px" height="20px" alt="Up Arrow"/>
+                <img src={down}  width="20px" height="20px" alt="Down Arrow"/></div>
             )}
-            {direction !== "up" && direction !== "down" && (
+            {direction !== "up" 
+            && direction !== "down" 
+            && (
                 <div className="arrows">
-                <img src={upGrey} alt="Up Arrow Grey"/>
+                <img src={upGrey} width="20px" height="20px" alt="Up Arrow Grey"/>
 
-                    <img src={downGrey} alt="Down Arrow Grey"/>
+                    <img src={downGrey}  width="20px" height="20px" alt="Down Arrow Grey"/>
                 </div>
             )}
         </div>

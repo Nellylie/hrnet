@@ -74,6 +74,7 @@ tr:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .arrows img {
@@ -165,6 +166,8 @@ tr:hover {
   .arrows{
     top:0;
     position:relative;
+    display:flex;
+    justify-content:center;
     align-items: center;
   }
   .table td:before {
