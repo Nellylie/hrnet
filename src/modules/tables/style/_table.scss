@@ -139,6 +139,7 @@ tr:hover {
     flex-direction: row;
     justify-content: space-between;
     font-size:10px;
+    height:fit-content;
     margin:auto;
     width:95%;
     column-gap: 5px;
@@ -191,7 +192,7 @@ tr:hover {
     display: flex;
     align-items: center;
     border:none;
-    height:20px;
+    height:fit-content;
 
   }
   .table td>p{

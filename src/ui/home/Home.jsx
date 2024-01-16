@@ -1,6 +1,6 @@
 import { submitForm } from "../../reduxsection/formSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ModalUtils from "../../modules/modale/Modale";
 import DarkLightDropdown from 'dark-light-dropdown';
 import 'dark-light-dropdown/dist/index.es.css';
@@ -23,7 +23,6 @@ function Home() {
     const [selectedValueDepartment, setSelectedValueDepartment] = useState('');
     const [selectedValueStates, setSelectedValueStates ] = useState('');
     const [error, setError] = useState('');
-
     // Event handlers for dropdowns and form validation
     const handleOnChangeDepartment = (event) => setSelectedValueDepartment(event.target.value);
     const handleOnChangeStates = (event) => setSelectedValueStates(event.target.value);

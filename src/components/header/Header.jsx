@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
 
 function Header() {
     // URLs for navigation
